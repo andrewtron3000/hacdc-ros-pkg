@@ -1,0 +1,19 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="david2_face">
+
+  <include filename="$(find floating_faces)/urdf/face.xacro" />
+
+  <face_link facename="david2" facetexture="FloatingFaces/David2">
+  </face_link>
+
+</robot>
+
+
+
+
+
+
+
+
+
+

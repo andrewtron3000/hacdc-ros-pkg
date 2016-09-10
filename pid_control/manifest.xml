@@ -1,0 +1,17 @@
+<package>
+  <description brief="pid_control">
+
+     Simple PID controller class
+
+  </description>
+  <author>andrewtron3000</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/pid_control</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

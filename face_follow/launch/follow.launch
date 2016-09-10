@@ -1,0 +1,9 @@
+<launch>
+
+ <param name="face_follow/p" value="0.001" />
+ <param name="face_follow/i" value="0.0" />
+ <param name="face_follow/d" value="0.0" />
+
+ <node name="follower" pkg="face_follow" type="follower.py" />
+
+</launch>

@@ -1,0 +1,37 @@
+\subsubsection usage Usage
+\verbatim
+<node name="irobot_sensor_simulator" pkg="irobot_sensor_simulator" type="irobot_sensor_simulator">
+  <param name="wheeldropCaster" type="bool" value="False" />
+  <param name="wheeldropLeft" type="bool" value="False" />
+  <param name="wheeldropRight" type="bool" value="False" />
+  <param name="bumpLeft" type="bool" value="False" />
+  <param name="bumpRight" type="bool" value="False" />
+  <param name="wall" type="bool" value="False" />
+  <param name="cliffLeft" type="bool" value="False" />
+  <param name="cliffFronLeft" type="bool" value="False" />
+  <param name="cliffFrontRight" type="bool" value="False" />
+  <param name="cliffRight" type="bool" value="False" />
+  <param name="virtualWall" type="bool" value="False" />
+  <param name="infraredByte" type="int" value="0" />
+  <param name="advance" type="bool" value="False" />
+  <param name="play" type="bool" value="False" />
+  <param name="distance" type="int" value="0" />
+  <param name="angle" type="int" value="0" />
+  <param name="chargingState" type="int" value="0" />
+  <param name="voltage" type="int" value="0" />
+  <param name="current" type="int" value="0" />
+  <param name="batteryTemperature" type="int" value="0" />
+  <param name="batteryCharge" type="int" value="0" />
+  <param name="batteryCapacity" type="int" value="0" />
+  <param name="wallSignal" type="int" value="0" />
+  <param name="cliffLeftSignal" type="int" value="0" />
+  <param name="cliffFrontLeftSignal" type="int" value="0" />
+  <param name="cliffFrontRightSignal" type="int" value="0" />
+  <param name="cliffRightSignal" type="int" value="0" />
+  <param name="homeBase" type="bool" value="False" />
+  <param name="internalCharger" type="bool" value="False" />
+  <param name="songNumber" type="int" value="0" />
+  <param name="songPlaying" type="int" value="0" />
+</node>
+\endverbatim
+

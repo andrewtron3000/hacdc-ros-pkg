@@ -1,0 +1,158 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="robot_in_simulation">
+<xacro:property name="lineardensity" value="0.4732" />
+<xacro:property name="linkradius" value="0.0141" />
+<xacro:property name="torsolength" value="1.2192" />
+<xacro:property name="upperarmlength" value="0.3048" />
+<xacro:property name="lowerarmlength" value="0.2540" />
+<xacro:property name="pi" value="3.141592654" />
+<xacro:property name="basemass" value="3" />
+<xacro:property name="baseheight" value="0.056"/>
+<xacro:property name="baseradius" value="0.164975" />
+
+<!-- Base Link Macro Definition -->
+<xacro:macro name="robot_base" params="linkname">
+  <link name="${linkname}">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="${basemass}" />
+      <inertia ixx="${(1/12) * (basemass) * (baseheight * baseheight) + (1/4) * (basemass) * (baseradius * baseradius)}"
+	       ixy="0"
+	       ixz="0"
+	       iyy="${(1/12) * (basemass) * (baseheight * baseheight) + (1/4) * (basemass) * (baseradius * baseradius)}"
+	       iyz="0" 
+	       izz="${(1/2) * (basemass) * (baseradius * baseradius)}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+	     <cylinder radius="${baseradius}" length="${baseheight}" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="${baseradius}" length="${baseheight}" />
+      </geometry>
+    </collision>
+  </link>
+</xacro:macro>
+
+<!-- Base Joint Macro Definition -->
+<xacro:macro name="robot_base_joint" params="jointname linkparent linkchild *origin">
+  <joint name="${jointname}" type="fixed">
+    <xacro:insert_block name="origin" />
+    <parent link="${linkparent}" />
+    <child link="${linkchild}" />
+  </joint>
+</xacro:macro>
+
+<!-- Joint Macro Definition -->
+<xacro:macro name="robot_joint" params="jointname linkparent linkchild *origin">
+  <joint name="${jointname}" type="continuous">
+    <xacro:insert_block name="origin" />
+    <parent link="${linkparent}" />
+    <child link="${linkchild}" />
+    <axis xyz="0 1 0" />
+  </joint>
+</xacro:macro>
+
+<!-- Link Macro Definition -->
+<xacro:macro name="robot_link" params="linkname linklength">
+  <link name="${linkname}">
+    <inertial>
+      <origin xyz="0 0 ${linklength/2}" rpy="0 0 0" />
+      <mass value="${linklength * lineardensity}" />
+      <inertia ixx="${(1/12) * (linklength * lineardensity) * (linklength * linklength) + (1/4) * (linklength * lineardensity) * (linkradius * linkradius)}"
+	       ixy="0"
+	       ixz="0"
+	       iyy="${(1/12) * (linklength * lineardensity) * (linklength * linklength) + (1/4) * (linklength * lineardensity) * (linkradius * linkradius)}"
+	       iyz="0" 
+	       izz="${(1/2) * (linklength * lineardensity) * (linkradius * linkradius)}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 ${linklength/2}" rpy="0 0 0" />
+      <geometry>
+	<cylinder radius="${linkradius}" length="${linklength}" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${linklength/2}" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="${linkradius}" length="${linklength}" />
+      </geometry>
+    </collision>
+  </link>
+</xacro:macro>
+
+<!--
+
+<xacro:robot_base linkname="create">
+</xacro:robot_base>
+<gazebo reference="base">
+  <material>Gazebo/White</material>
+</gazebo>
+
+<xacro:robot_link linkname="lefttorso" linklength="${torsolength}">
+</xacro:robot_link>
+<gazebo reference="lefttorso">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<xacro:robot_link linkname="leftupperarm" linklength="${upperarmlength}">
+</xacro:robot_link>
+<gazebo reference="leftupperarm">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+<xacro:robot_link linkname="leftlowerarm" linklength="${lowerarmlength}">
+</xacro:robot_link>
+<gazebo reference="leftlowerarm">
+  <material>Gazebo/Red</material>
+</gazebo>
+
+<xacro:robot_link linkname="righttorso" linklength="${torsolength}">
+</xacro:robot_link>
+<gazebo reference="righttorso">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<xacro:robot_link linkname="rightupperarm" linklength="${upperarmlength}">
+</xacro:robot_link>
+<gazebo reference="rightupperarm">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+<xacro:robot_link linkname="rightlowerarm" linklength="${lowerarmlength}">
+</xacro:robot_link>
+<gazebo reference="rightlowerarm">
+  <material>Gazebo/Red</material>
+</gazebo>
+
+<xacro:robot_base_joint jointname="robot_base_joint_l" linkparent="create" linkchild="lefttorso">
+  <origin xyz="0 0.111 ${baseheight}" rpy="0 0 0" />
+</xacro:robot_base_joint>
+
+<xacro:robot_base_joint jointname="robot_base_joint_r" linkparent="create" linkchild="righttorso">
+  <origin xyz="0 -0.111 ${baseheight}" rpy="0 0 0" />
+</xacro:robot_base_joint>
+
+<xacro:robot_joint jointname="leftshoulder" linkparent="lefttorso" linkchild="leftupperarm">
+  <origin xyz="0 ${linkradius} ${torsolength}" rpy="${pi} 0 0" />
+</xacro:robot_joint>
+
+<xacro:robot_joint jointname="leftelbow" linkparent="leftupperarm" linkchild="leftlowerarm">
+  <origin xyz="0 0 ${upperarmlength}" rpy="0 0 0" />
+</xacro:robot_joint>
+
+<xacro:robot_joint jointname="rightshoulder" linkparent="righttorso" linkchild="rightupperarm">
+  <origin xyz="0 -${linkradius} ${torsolength}" rpy="${pi} 0 0" />
+</xacro:robot_joint>
+
+<xacro:robot_joint jointname="rightelbow" linkparent="rightupperarm" linkchild="rightlowerarm">
+  <origin xyz="0 0 ${upperarmlength}" rpy="0 0 0" />
+</xacro:robot_joint>
+
+-->
+
+</robot>

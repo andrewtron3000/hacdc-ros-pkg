@@ -1,0 +1,19 @@
+<package>
+  <description brief="irobot_sensor_simulator">
+
+     Simulates the sensors and sensorPacket normally sent
+     by the irobot_create_2_1 driver.
+
+  </description>
+  <author>andrewtron3000</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/irobot_sensor_simulator</url>
+  <depend package="dynamic_reconfigure"/>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="irobot_create_2_1"/>
+
+</package>
+

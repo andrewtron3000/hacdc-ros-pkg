@@ -1,0 +1,18 @@
+<package>
+  <description brief="robot_emotions">
+
+     This node maps robot state to robot emotion.
+
+  </description>
+  <author>andrewha</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/robot_emotions</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="irobot_create_2_1"/>
+
+</package>
+
+

@@ -1,0 +1,23 @@
+<package>
+    <description brief="URDF for IROBOTRON">
+	Derived from Jeff Rousseau's irobot_create_description ROS package, modified to include a torso and camera.
+    </description>
+    <author>andrewtron3000</author>
+    <license>BSD</license>
+    <review status="unreviewed" notes=""/>
+    <url>http://ros.org/wiki/irobotron_description</url>
+
+    <depend package="urdf" />
+    <depend package="xacro" />
+    <depend package="gazebo" />
+    <depend package="gazebo_tools" />
+    <depend package="fake_localization" />
+    <depend package="erratic_gazebo_plugins"/>
+
+    <export>
+        <gazebo gazebo_media_path="${prefix}" />
+    </export>
+
+</package>
+
+

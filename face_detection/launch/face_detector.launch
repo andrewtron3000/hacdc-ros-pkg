@@ -1,0 +1,12 @@
+<launch>
+
+ <node name="detector" pkg="face_detection" type="detector.py">
+    <param name="classifier" 
+           type="string" 
+           value="$(find face_detection)/launch/haarcascade_frontalface_alt.xml" />
+ </node>
+
+ <node name="face_viewer" pkg="image_view" type="image_view" args="image:=/face_view" />
+
+</launch>
+

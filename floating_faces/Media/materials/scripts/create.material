@@ -1,0 +1,136 @@
+material FloatingFaces/Alan
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture alan.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/David
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture david.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/David2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture david_2.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/Eric
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture eric.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/Erica
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture erica.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/Jeff
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture jeff.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/John
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture john.png
+      }
+    }
+  }
+}
+
+material FloatingFaces/Phil
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture phil.png
+      }
+    }
+  }
+}
+

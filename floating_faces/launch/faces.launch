@@ -1,0 +1,37 @@
+<launch>
+
+    <param name="alan_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/alan.xacro'" />
+    <param name="david_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/david.xacro'" />
+    <param name="david2_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/david2.xacro'" />
+    <param name="eric_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/eric.xacro'" />
+    <param name="erica_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/erica.xacro'" />
+    <param name="jeff_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/jeff.xacro'" />
+    <param name="john_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/john.xacro'" />
+    <param name="phil_description" command="$(find xacro)/xacro.py '$(find floating_faces)/urdf/phil.xacro'" />
+    
+    <node name="alan_create" pkg="gazebo" type="spawn_model" 
+          args="-urdf -x 2 -y 0 -z 1 -param alan_description -model alan_model" 
+          respawn="false" output="screen" />
+    <node name="david_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x 1.4142 -y 1.4142 -z 1 -Y 0.785 -param david_description -model david_model"
+          respawn="false" output="screen" />
+    <node name="david2_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x 0 -y 2 -z 1 -Y 1.571 -param david2_description -model david2_model"
+          respawn="false" output="screen" />
+    <node name="eric_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x -1.4142 -y 1.4142 -z 1 -Y 2.356 -param eric_description -model eric_model"
+          respawn="false" output="screen" />
+    <node name="erica_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x -2 -y 0 -z 1 -Y 3.1415 -param erica_description -model erica_model"
+          respawn="false" output="screen" />
+    <node name="jeff_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x -1.4142 -y -1.4142 -z 1 -Y 3.927 -param jeff_description -model jeff_model"
+          respawn="false" output="screen" />
+    <node name="john_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x 0 -y -2 -z 1 -Y 4.712 -param john_description -model john_model"
+          respawn="false" output="screen" />
+    <node name="phil_create" pkg="gazebo" type="spawn_model"
+          args="-urdf -x 1.4142 -y -1.4142 -z 1 -Y 5.498 -param phil_description -model phil_model"
+          respawn="false" output="screen" />
+    
+</launch>

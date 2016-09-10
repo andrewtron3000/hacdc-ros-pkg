@@ -1,0 +1,36 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~wheeldropCaster" : \b [bool]  min: False, default: False, max: True
+- \b "~wheeldropLeft" : \b [bool]  min: False, default: False, max: True
+- \b "~wheeldropRight" : \b [bool]  min: False, default: False, max: True
+- \b "~bumpLeft" : \b [bool]  min: False, default: False, max: True
+- \b "~bumpRight" : \b [bool]  min: False, default: False, max: True
+- \b "~wall" : \b [bool]  min: False, default: False, max: True
+- \b "~cliffLeft" : \b [bool]  min: False, default: False, max: True
+- \b "~cliffFronLeft" : \b [bool]  min: False, default: False, max: True
+- \b "~cliffFrontRight" : \b [bool]  min: False, default: False, max: True
+- \b "~cliffRight" : \b [bool]  min: False, default: False, max: True
+- \b "~virtualWall" : \b [bool]  min: False, default: False, max: True
+- \b "~infraredByte" : \b [int]  min: 0, default: 0, max: 255
+- \b "~advance" : \b [bool]  min: False, default: False, max: True
+- \b "~play" : \b [bool]  min: False, default: False, max: True
+- \b "~distance" : \b [int]  min: -8000, default: 0, max: 8000
+- \b "~angle" : \b [int]  min: -8000, default: 0, max: 8000
+- \b "~chargingState" : \b [int]  min: 0, default: 0, max: 255
+- \b "~voltage" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~current" : \b [int]  min: -8000, default: 0, max: 8000
+- \b "~batteryTemperature" : \b [int]  min: -120, default: 0, max: 120
+- \b "~batteryCharge" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~batteryCapacity" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~wallSignal" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~cliffLeftSignal" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~cliffFrontLeftSignal" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~cliffFrontRightSignal" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~cliffRightSignal" : \b [int]  min: 0, default: 0, max: 65535
+- \b "~homeBase" : \b [bool]  min: False, default: False, max: True
+- \b "~internalCharger" : \b [bool]  min: False, default: False, max: True
+- \b "~songNumber" : \b [int]  min: 0, default: 0, max: 255
+- \b "~songPlaying" : \b [int]  min: 0, default: 0, max: 255
+

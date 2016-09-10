@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<robot
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+    
+    <!-- Properties (Constants) -->
+    <property name="M_PI" value="3.14159"/>
+    
+    <macro name="block_laser" params="parent x y z">
+        <joint name="${parent}_block_laser_joint" type="fixed">
+            <origin xyz="${x} ${y} ${z}" rpy="0 ${camera_down_tilt_rads} ${M_PI/32}" />
+            <parent link="${parent}" />
+            <child link="${parent}_laser_platform_link" />
+        </joint>
+        
+        <link name="${parent}_laser_platform_link">
+            <inertial>
+                <mass value="0.05" />
+                <origin xyz=" 0 -0.008 0 " />
+                <inertia  ixx="0.012411765597" ixy="0.0" ixz="0.0"
+                          iyy="0.015218160428" iyz="0.0"
+                          izz="0.011763977943" />
+            </inertial>
+            
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.01 0.01 0.01" />
+                </geometry>
+                <material name="White" />
+            </visual>
+            
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.01 0.01 0.01" />
+                </geometry>
+            </collision>
+        </link>
+
+        <gazebo reference="${parent}_laser_platform_link">
+          <sensor:ray name="ray_sensor">
+            <rayCount>30</rayCount>
+            <rangeCount>30</rangeCount>
+            <laserCount>1</laserCount>
+            <resRange>0.01</resRange>
+            
+            <origin>0.0 0.0 0.0</origin>
+            <displayRays>false</displayRays>
+            
+            <minAngle>-20</minAngle>
+            <maxAngle> 20</maxAngle>
+            
+            <minRange>0.02</minRange>
+            <maxRange>50.0</maxRange>
+            <updateRate>5.0</updateRate>
+            
+            <verticalRayCount>30</verticalRayCount>
+            <verticalRangeCount>30</verticalRangeCount>
+            <verticalMinAngle>-20</verticalMinAngle>
+            <verticalMaxAngle>20</verticalMaxAngle>
+            
+            <controller:gazebo_ros_block_laser name="ray_block_controller" plugin="libgazebo_ros_block_laser.so">
+              <gaussianNoise>0.005</gaussianNoise>
+              <alwaysOn>true</alwaysOn>
+              <updateRate>5.0</updateRate>
+              <topicName>block_laser_cloud</topicName>
+              <frameName>${parent}_laser_platform_link</frameName>
+              <interface:laser name="ray_block_iface" />
+            </controller:gazebo_ros_block_laser>
+          </sensor:ray>
+          <material>Gazebo/Red</material>
+        </gazebo>
+    </macro>
+</robot>
+

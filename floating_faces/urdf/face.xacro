@@ -1,0 +1,38 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="face">
+
+  <!-- Properties (Constants) -->
+  <property name="M_PI" value="3.14159"/>
+  <property name="SQRT_2" value="1.4142" />
+  <property name="face_distance" value="2" />
+  <property name="boxsize" value="0.25" />
+  <property name="boxheight" value="0.15" />
+  <property name="boxpitch" value="0.3" />
+
+  <macro name="face_link" params="facename facetexture">
+    <link name="${facename}_link">
+      <inertial>
+        <origin xyz="0 0 ${boxheight}"/> 
+        <mass value="1.0" />
+        <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="100.0"  iyz="0.0"  izz="1.0" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 ${boxheight}" rpy="0 ${boxpitch} 0"/> 
+        <geometry>
+          <box size="${boxsize} ${boxsize} ${boxsize}" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 ${boxheight}" rpy="0 ${boxpitch} 0"/> 
+        <geometry>
+          <box size="${boxsize} ${boxsize} ${boxsize}" />
+        </geometry>
+      </collision>
+    </link>
+    <gazebo reference="${facename}_link">
+      <material>${facetexture}</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+  </macro>
+
+</robot>
